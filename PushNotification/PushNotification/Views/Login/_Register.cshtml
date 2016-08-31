@@ -1,0 +1,126 @@
+﻿<div id="content" class="paddingNavbar" style="min-height: 577px; background-color: #f7fafa;">
+    <div id="login">
+        <div class="container">
+            <div class="col-md-5 panel panel-default center-block">
+                <div class="panel-body pt10 pb10 pl10 pr10">
+                    <div class="login-form">
+                        <div class="login-title">
+                            <h4 class="txt-c mt0 mb0 pt0 pb0">Register</h4>
+                        </div>
+                        <form role="form" name="RegisterForm" novalidate>
+                            <!--Error messages-->
+                            <div class="alert alert-danger alert-dismissible" role="alert" ng-show="Error != null">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span>
+                                {{Error}}
+                            </div>
+                            <!--Username-->
+                            <div class="form-group">
+                                <input type="text" class="form-control login-field" id="UserName" placeholder="Account"
+                                       name="UserName"
+                                       ng-model="User.UserName"
+                                       ng-model-options="{ updateOn: 'change blur'}"
+                                       ng-trim="true"
+                                       required
+                                       ng-minlength="8"
+                                       ng-maxlength="20"
+                                       ng-pattern="/^[a-zA-Z0-9]+$/">
+                                <label class="login-field-icon fui-user" for="UserName"></label>
+                                @*<span class="glyphicon glyphicon-ok text-success form-control-feedback" ng-if="RegisterForm.UserName.$dirty && RegisterForm.UserName.$valid"></span>*@
+                                <div ng-show="RegisterForm.UserName.$dirty && RegisterForm.UserName.$invalid" class="text-danger">
+                                    <span class="glyphicon glyphicon-remove text-danger"></span>
+                                    <span ng-show="RegisterForm.UserName.$error.required">Please enter account</span>
+                                    <span ng-show="RegisterForm.UserName.$error.minlength">Account must be 8 - 20 characters</span>
+                                    <span ng-show="RegisterForm.UserName.$error.maxlength">Account must be 8 - 20 characters</span>
+                                    <span ng-show="RegisterForm.UserName.$error.pattern">Must be number and alphabet characters</span>
+                                </div>
+                            </div>
+                            <!--Password-->
+                            <div class="form-group">
+                                <input type="password" class="form-control login-field" id="Password" placeholder="Password"
+                                       name="Password"
+                                       ng-model="Password"
+                                       ng-minlength="8"
+                                       ng-maxlength="50"
+                                       maxlength="50"
+                                       ng-model-options="{ updateOn: 'change blur'}"
+                                       required>
+                                <label class="login-field-icon fui-lock" for="Password"></label>
+                                @*<span class="glyphicon glyphicon-ok text-success form-control-feedback" ng-show="RegisterForm.Password.$dirty && RegisterForm.Password.$valid"></span>*@
+                                <div ng-show="RegisterForm.Password.$dirty && RegisterForm.Password.$invalid" class="text-danger">
+                                    <span class="glyphicon glyphicon-remove text-danger"></span>
+                                    <span ng-show="RegisterForm.Password.$error.minlength">Must be 8 - 50 characters</span>
+                                    <span ng-show="RegisterForm.Password.$error.maxlength">Must be 8 - 50 characters</span>
+                                    <span ng-show="RegisterForm.Password.$error.required">Pls enter password</span>
+                                </div>
+                            </div>
+                            <!--Re-Password-->
+                            <div class="form-group">
+                                <input type="password" class="form-control login-field" id="rePassword" placeholder="RePassword"
+                                       ng-model="rePassword"
+                                       ng-model-options="{ updateOn: 'change blur'}"
+                                       name="rePassword"
+                                       password-match="Password">
+                                <label class="login-field-icon fui-lock" for="rePassword"></label>
+                                @*<span class="glyphicon glyphicon-ok text-success form-control-feedback"
+                                    ng-show="RegisterForm.rePassword.$dirty && RegisterForm.rePassword.$valid"></span>*@
+                                <div ng-show="RegisterForm.rePassword.$dirty && RegisterForm.rePassword.$invalid" class="text-danger">
+                                    <span class="glyphicon glyphicon-remove text-danger"></span>
+                                    <span ng-show="RegisterForm.rePassword.$error.unique">Not Match with password!</span>
+                                </div>
+                            </div>
+                            <!--Email-->
+                            <div class="form-group">
+                                <input type="email" class="form-control fui-mail login-field" id="Email" placeholder="Email"
+                                       ng-model="User.Email"
+                                       name="Email"
+                                       ng-model-options="{ updateOn: 'change blur'}"
+                                       required
+                                       ng-trim="true">
+                                <label class="login-field-icon fui-user" for="Email"></label>
+                                @*<span class="glyphicon glyphicon-ok text-success form-control-feedback"
+                                    ng-show="RegisterForm.Email.$dirty && RegisterForm.Email.$valid"></span>*@
+                                <div ng-show="RegisterForm.Email.$dirty && RegisterForm.Email.$invalid" class="text-danger">
+                                    <span class="glyphicon glyphicon-remove text-danger"></span>
+                                    <span ng-show="RegisterForm.Email.$error.required">Please enter email</span>
+                                    <span ng-show="RegisterForm.Email.$error.email">Wrong email format</span>
+                                </div>
+                            </div>
+                            <!--FullName-->
+                            <div class="form-group ">
+                                <input type="text" class="form-control login-field" id="FullName" placeholder="Full Name"
+                                       ng-model="User.FullName"
+                                       name="FullName"
+                                       ng-model-options="{ updateOn: 'change blur'}"
+                                       required
+                                       ng-trim="true">
+                                <label class="login-field-icon fui-user" for="FullName"></label>
+                                @*<span class="glyphicon glyphicon-ok text-success form-control-feedback"
+                                    ng-show="RegisterForm.FullName.$dirty && RegisterForm.FullName.$valid"></span>*@
+                                <div ng-show="RegisterForm.FullName.$dirty && RegisterForm.FullName.$invalid" class="text-danger">
+                                    <span class="glyphicon glyphicon-remove text-danger"></span>
+                                    <span ng-show="RegisterForm.FullName.$error.required">Please enter fullname</span>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary btn-lg btn-block" ng-click="submit()"
+                                    ng-disabled="!RegisterForm.$dirty || (RegisterForm.$dirty && RegisterForm.$invalid)">
+                                <i class="fa fa-sign-in"></i> Register
+                            </button>
+                        </form>
+                        @*                        <p class="text-center tip-info">*@
+                        @*                            By signing up you agree to our <a>terms of use</a> , <a>privacy policy</a> , and <a>cookie policy</a> .*@
+                        @*                        </p>*@
+                        <div class="text-center">
+                            <div class="boderbottom"></div>
+                            <p>Have account? <a href="@Url.Content("/login/login")">Login</a></p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>  <!--end content -->
