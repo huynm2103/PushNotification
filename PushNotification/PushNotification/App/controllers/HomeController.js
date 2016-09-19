@@ -16,7 +16,7 @@ app.controller('HomeController', function ($scope, $rootScope, $sce, $window, Us
         $(window).triggerHandler('resize');
     };
 
-    $scope.test = "Suprise!";
+    $scope.test = "Home Page!";
 
     $scope.PokeOtherUser = function () {
         requestPushPermission();

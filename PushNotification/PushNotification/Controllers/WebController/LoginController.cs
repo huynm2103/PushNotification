@@ -88,11 +88,11 @@ namespace PushNotification.Controllers.WebController
             try
             {
                 FormsAuthentication.SignOut();
-                //for (int index = 0; index < Session.Keys.Count; index++)
-                //{
-                //    var sessionName = Session.Keys[index];
-                //    Session[sessionName] = null;
-                //}
+                for (int index = 0; index < Session.Keys.Count; index++)
+                {
+                    var sessionName = Session.Keys[index];
+                    Session[sessionName] = null;
+                }
                 // Remove all cookies.
                 var limit = Request.Cookies.Count;
                 for (int i = 0; i < limit; i++)

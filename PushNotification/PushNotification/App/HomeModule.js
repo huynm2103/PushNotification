@@ -15,6 +15,7 @@ app.config(["$routeProvider", function ($routeProvider) {
             caseInsensitiveMatch: true,
             templateUrl: "/Client/Home",
             controller: "HomeController"
+            // Load important first
             //resolve: {
             //    slides: ['SlideService', 'CommmonService', '$rootScope', '$q', function (SlideService, CommmonService, $rootScope, $q) {
             //        var promise = SlideService.getSlides();
