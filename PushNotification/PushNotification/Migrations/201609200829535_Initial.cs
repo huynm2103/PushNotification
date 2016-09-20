@@ -8,16 +8,19 @@ namespace PushNotification.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.UserInfo",
+                "dbo.Message",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        UserID = c.Int(nullable: false),
-                        CloudId = c.String(),
+                        MessageId = c.Int(nullable: false, identity: true),
+                        CreatorID = c.Int(nullable: false),
+                        Content = c.String(),
+                        SentTime = c.DateTime(nullable: false),
+                        CreatedDate = c.DateTime(nullable: false),
+                        IsLoop = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.User", t => t.UserID)
-                .Index(t => t.UserID);
+                .PrimaryKey(t => t.MessageId)
+                .ForeignKey("dbo.User", t => t.CreatorID)
+                .Index(t => t.CreatorID);
             
             CreateTable(
                 "dbo.User",
@@ -37,14 +40,29 @@ namespace PushNotification.Migrations
                     })
                 .PrimaryKey(t => t.UserID);
             
+            CreateTable(
+                "dbo.UserInfo",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserID = c.Int(nullable: false),
+                        CloudId = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.User", t => t.UserID)
+                .Index(t => t.UserID);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Message", "CreatorID", "dbo.User");
             DropForeignKey("dbo.UserInfo", "UserID", "dbo.User");
             DropIndex("dbo.UserInfo", new[] { "UserID" });
-            DropTable("dbo.User");
+            DropIndex("dbo.Message", new[] { "CreatorID" });
             DropTable("dbo.UserInfo");
+            DropTable("dbo.User");
+            DropTable("dbo.Message");
         }
     }
 }

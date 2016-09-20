@@ -200,6 +200,11 @@
     <Compile Include="Helpers\CustomException.cs" />
     <Compile Include="Helpers\GCMessage.cs" />
     <Compile Include="Helpers\VarConstants.cs" />
+    <Compile Include="Migrations\201609200829535_Initial.cs" />
+    <Compile Include="Migrations\201609200829535_Initial.Designer.cs">
+      <DependentUpon>201609200829535_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTOs\HttpMessageDTO.cs" />
     <Compile Include="Models\DTOs\UserRegisterDTO.cs" />
     <Compile Include="Models\DTOs\UserLoginDTO.cs" />
@@ -212,12 +217,8 @@
     </Compile>
     <Compile Include="Helpers\BaseController.cs" />
     <Compile Include="Helpers\SingletonBase.cs" />
-    <Compile Include="Migrations\201608230915170_Initial.cs" />
-    <Compile Include="Migrations\201608230915170_Initial.Designer.cs">
-      <DependentUpon>201608230915170_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTOs\UserBasicInfoDTO.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1077,17 +1078,17 @@
     <Content Include="Views\Login\_Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608230915170_Initial.resx">
-      <DependentUpon>201608230915170_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201609200829535_Initial.resx">
+      <DependentUpon>201609200829535_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -13,7 +13,7 @@ namespace PushNotification.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201608230915170_Initial"; }
+            get { return "201609200829535_Initial"; }
         }
         
         string IMigrationMetadata.Source

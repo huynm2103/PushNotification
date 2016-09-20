@@ -38,7 +38,7 @@ namespace PushNotification.Models
         #region "RelationShip"
         
         public virtual ICollection<UserInfo> UserInfo { get; set; }
-
+        public virtual ICollection<Message> SentMessages { get; set; }
         #endregion
     }
 

@@ -13,6 +13,7 @@ namespace PushNotification.Respository
     {
         public DbSet<User> Users { get; set; }
         public DbSet<UserInfo> UserInfos { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         public AppDataContext()
             : base("DefaultConnection")
